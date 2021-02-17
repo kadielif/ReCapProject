@@ -11,44 +11,58 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //CarManager carManager = new CarManager(new InMemoryCarDal());
-            //BrandManager brandManager = new BrandManager(new InMemoryBrandDal());
+            CarAdd();
+            CarDelete();
+            GetCar();
+            JoinThreeTable();
+            GetById(2);
+        }
 
+        private static void JoinThreeTable()
+        {
             CarManager efCarManager = new CarManager(new EfCarDal());
-            //foreach (var car in carManager.GetAll())
-            //{
-            //    Console.WriteLine(car.Id);
-            //}
-
-            //var result = from c in carManager.GetAll()
-            //             join b in brandManager.GetAll() on c.BrandId equals b.Id
-            //             where c.Id == 2
-            //             select b;
-            //foreach (var c in result)
-            //{
-            //    Console.WriteLine(c.BrandName);
-            //}
-
-            Console.WriteLine("------------------");
-
-
-            foreach (var c in efCarManager.GetAll())
+            foreach (var c in efCarManager.GetCarDetail())
             {
-                Console.WriteLine(c.Description);
+                Console.WriteLine(c.CarName + " : " + c.BrandName);
             }
+        }
 
-            Car car1 = new Car() { Id = 20, BrandId = 1, ColorId = 2, DailyPrice = 2000, Description = "Otomatik", ModelYear = 2021 };
-            Car car2 = new Car() { Id = 21, BrandId = 2, ColorId = 2, DailyPrice = 0, Description = "Otomatik", ModelYear = 2021 };
-            Car car3 = new Car() { Id = 22, BrandId = 4, ColorId = 2, DailyPrice = 2000, Description = "Otomatik", ModelYear = 2021 };
+        private static void GetById(int id)
+        {
+            CarManager efCarManager = new CarManager(new EfCarDal());
+            Console.WriteLine(efCarManager.GetById(id).Description);
+        }
 
+        private static void CarUpdate()
+        {
+            CarManager efCarManager = new CarManager(new EfCarDal());
+            efCarManager.Update(new Car() { Id = 23, BrandId = 1, ColorId = 2, DailyPrice = 2000, Description = "Manual", ModelYear = 2021 });
+        }
 
+        private static void CarDelete()
+        {
+            CarManager efCarManager = new CarManager(new EfCarDal());
+            efCarManager.Delete(new Car() { Id = 23, BrandId = 1, ColorId = 2, DailyPrice = 2000, Description = "Otomatik", ModelYear = 2021 });
+        }
+
+        private static void GetCar()
+        {
+            CarManager efCarManager = new CarManager(new EfCarDal());
+            foreach (var car in efCarManager.GetAll())
+            {
+                Console.WriteLine(car.Id+" : "+car.Description);
+            }
+        }
+
+        private static void CarAdd()
+        {
+            Car car1 = new Car() { Id = 22, BrandId = 1, ColorId = 2, DailyPrice = 2000, Description = "Otomatik", ModelYear = 2021 };
+            //Car car2 = new Car() { Id = 21, BrandId = 2, ColorId = 2, DailyPrice = 0, Description = "Otomatik", ModelYear = 2021 };
+     
             //Çalışır
             efCarManager.Add(car1);
             //Error verir
-            efCarManager.Add(car2);
-            //Error verir
-            efCarManager.Add(car3);
-
+            //efCarManager.Add(car2);
         }
     }
 }
