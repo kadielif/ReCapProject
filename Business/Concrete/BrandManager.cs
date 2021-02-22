@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -17,19 +18,14 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        public Brand Get()
+        public IDataResult<Brand> Get(Expression<Func<Brand, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Brand>(_brandDal.Get(filter),"listelendi");
         }
 
-        public Brand Get(Expression<Func<Brand, bool>> filter = null)
+        public IDataResult<List<Brand>> GetAll()
         {
-            return _brandDal.Get(filter);
-        }
-
-        public List<Brand> GetAll()
-        {
-            return _brandDal.GetAll();
+            return new SuccessDataResult<List<Brand>>( _brandDal.GetAll(),"markalar listelendi");
         }
     }
 }

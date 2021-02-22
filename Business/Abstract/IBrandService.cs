@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstract;
+﻿using Core.Utilities.Results;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace Business.Abstract
 {
     public interface IBrandService
     {   
-        List<Brand> GetAll();
-        Brand Get(Expression<Func<Brand,bool>>filter=null);
+        IDataResult<List<Brand>> GetAll();
+        IDataResult<Brand> Get(Expression<Func<Brand,bool>>filter=null);
     }
 }

@@ -6,10 +6,10 @@ namespace Business.Constants
 {
     public static class Messages
     {
-        public static string ProductAdded = "Ürün eklendi";
-        public static string ProductUpdated = "Ürün güncellendi";
-        public static string ProductDeleted = "Ürün silindi";
-        public static string ProductListed = "Ürün listelendi";
+        public static string CarAdded = "Araba eklendi";
+        public static string CarUpdated = "Araba güncellendi";
+        public static string CarDeleted = "Araba silindi";
+        public static string CarListed = "Araba listelendi";
 
         public static string UserAdded = "Kişi eklendi ";
         public static string UserDeleted = "Kişi silindi ";
@@ -26,8 +26,7 @@ namespace Business.Constants
         public static string CustomerUpdated = "Müşteri güncellendi ";
         public static string CustomerListed = "Müşteri listelendi";
 
-        public static string ProductAddedError = "Hata, Ürün eklenemedi.";
-        public static string ProductsListed = "Ürünler listelendi";
+        public static string CarAddedError = "Hata, Araba eklenemedi.";
 
 
     }
