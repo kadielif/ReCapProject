@@ -12,5 +12,9 @@ namespace Business.Abstract
     {   
         IDataResult<List<Brand>> GetAll();
         IDataResult<Brand> Get(Expression<Func<Brand,bool>>filter=null);
+
+        IResult Add(Brand brand);
+        IResult Delete(Brand brand);
+        IResult Update(Brand brand);
     }
 }
