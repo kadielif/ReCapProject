@@ -27,7 +27,7 @@ namespace Business.Concrete
         {
             using (ReCapContext context = new ReCapContext())
             {
-                if (car.DailyPrice > 0 && context.Brand.SingleOrDefault(b => b.Id == car.BrandId).BrandName.Length > 2 )
+                if (car.DailyPrice > 0 && context.Brands.SingleOrDefault(b => b.Id == car.BrandId).BrandName.Length > 2 )
                 {
                     _carDal.Add(car);
                     return new SuccessResult(Messages.CarAdded);
@@ -57,14 +57,14 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllCarDetails());
         }
 
-        public IDataResult<List<Car>> GetCarsByBrandId(int id)
+        public IDataResult<List<CarDetailDto>> GetCarsByBrandId(int id)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == id));
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllByBrandIdCarDetails(id));
         }
 
-        public IDataResult<List<Car>> GetCarsByColorId(int id)
+        public IDataResult<List<CarDetailDto>> GetCarsByColorId(int id)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id));
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllByColorIdCarDetails(id));
         }
 
         public IResult Update(Car car)
@@ -72,5 +72,8 @@ namespace Business.Concrete
             _carDal.Update(car);
             return new SuccessResult(Messages.CarUpdated);
         }
+
+
     }
+
 }

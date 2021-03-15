@@ -11,6 +11,11 @@ namespace Business.Constants
         public static string CarDeleted = "Araba silindi";
         public static string CarListed = "Araba listelendi";
 
+        public static string CarImageAdded = "Araba resmi eklendi";
+        public static string CarImageUpdated = "Araba resmi güncellendi";
+        public static string CarImageDeleted = "Araba resmi silindi";
+        public static string CarImageListed = "Araba resmi listelendi";
+
         public static string UserAdded = "Kişi eklendi ";
         public static string UserDeleted = "Kişi silindi ";
         public static string UserUpdated = "Kişi güncellendi ";
@@ -27,6 +32,8 @@ namespace Business.Constants
         public static string CustomerListed = "Müşteri listelendi";
 
         public static string CarAddedError = "Hata, Araba eklenemedi.";
+
+        public static string ImageCountOfCarError = "Hata, Araba resmi eklenemedi";
 
 
     }

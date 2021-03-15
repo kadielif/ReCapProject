@@ -11,19 +11,18 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomersController : ControllerBase
+    public class ColorsController : ControllerBase
     {
-        ICustomerService _customerService;
+        IColorService _colorService;
 
-        public CustomersController(ICustomerService customerService)
+        public ColorsController(IColorService colorService)
         {
-            _customerService = customerService;
+            _colorService = colorService;
         }
-
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _customerService.GetAll();
+            var result = _colorService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -31,9 +30,10 @@ namespace WebAPI.Controllers
             return BadRequest();
         }
 
-        public IActionResult Add(Customer customer)
+        [HttpPost("add")]
+        public IActionResult Add(Color color)
         {
-            var result = _customerService.Add(customer);
+            var result = _colorService.Add(color);
             if (result.Success)
             {
                 return Ok(result);
@@ -41,24 +41,24 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         [HttpPost("delete")]
-        public IActionResult Delete(Customer customer)
+        public IActionResult Delete(Color color)
         {
-            var result = _customerService.Delete(customer);
+            var result = _colorService.Delete(color);
             if (result.Success)
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
         [HttpPost("update")]
-        public IActionResult Update(Customer customer)
+        public IActionResult Update(Color color)
         {
-            var result = _customerService.Update(customer);
+            var result = _colorService.Update(color);
             if (result.Success)
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
     }
 }

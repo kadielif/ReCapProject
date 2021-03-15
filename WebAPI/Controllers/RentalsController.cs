@@ -26,17 +26,28 @@ namespace WebAPI.Controllers
             var result = _renalService.GetAll();
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             return BadRequest(result.Message);
         }
-        [HttpGet("getrentaldetail")]
+        [HttpGet("getrentaldetails")]
         public IActionResult GetRentalDetails(int id)
         {
             var result = _renalService.GetRentalDetails(id);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpGet("getrentaldetail")]
+        public IActionResult GetRentalDetail()
+        {
+            var result = _renalService.GetRentalDetail();
+            if (result.Success)
+            {
+                return Ok(result);
             }
             return BadRequest(result.Message);
         }
