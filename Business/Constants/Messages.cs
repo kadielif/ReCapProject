@@ -33,7 +33,8 @@ namespace Business.Constants
 
         public static string CarAddedError = "Hata, Araba eklenemedi.";
 
-        public static string ImageCountOfCarError = "Hata, Araba resmi eklenemedi";
+         public static string ImageCountOfCarError = "Hata, Araba resmi eklenemedi";
+         public static string AuthorizationDenied = "Yetkiniz yok";
 
 
     }

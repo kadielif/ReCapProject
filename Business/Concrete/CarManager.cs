@@ -56,6 +56,10 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllCarDetails());
         }
+        public IDataResult<List<CarDetailDto>> GetCarDetailsById(int id)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailsById(id));
+        }
 
         public IDataResult<List<CarDetailDto>> GetCarsByBrandId(int id)
         {
@@ -73,7 +77,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarUpdated);
         }
 
-
+ 
     }
 
 }

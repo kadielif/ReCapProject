@@ -20,8 +20,8 @@ namespace Core.Utilities.Helpers
                 }
             }
             var result = newPath(file);
-            File.Move(sourcepath, result);
-            return result;
+            File.Move(sourcepath, result.newPath);
+            return result.Path2;
         }
         public static IResult Delete(string path)
         {
@@ -49,16 +49,19 @@ namespace Core.Utilities.Helpers
             File.Delete(sourcePath);
             return result;
         }
-        public static string newPath(IFormFile file)
+        public static (string newPath, string Path2) newPath(IFormFile file)
         {
             FileInfo ff = new FileInfo(file.FileName);
             string fileExtension = ff.Extension;
 
+            var newPath = Guid.NewGuid() + fileExtension;
+
+
             string path = Environment.CurrentDirectory + @"\wwwroot\uploads";
-            var newPath = Guid.NewGuid().ToString() + fileExtension;
 
             string result = $@"{path}\{newPath}";
-            return result;
+
+            return (result, newPath);
         }
     }
 }

@@ -64,6 +64,11 @@ namespace DataAccess.Concrete.InMemory
             return _car.Where(c => car.Id == c.Id).ToList();
         }
 
+        public List<CarDetailDto> GetCarDetailsById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Car car)
         {
             Car carToUpdate=new Car();
@@ -73,5 +78,7 @@ namespace DataAccess.Concrete.InMemory
             carToUpdate.Description = "Otomatik";
             carToUpdate.BrandId = 3;
         }
+
+   
     }
 }

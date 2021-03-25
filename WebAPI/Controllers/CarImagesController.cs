@@ -21,6 +21,28 @@ namespace WebAPI.Controllers
         {
             _carImageService = carImageService;
         }
+        [HttpGet("getall")]
+        public IActionResult GetAll()
+        {
+
+            var result = _carImageService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(); 
+        }
+        [HttpGet("getbyid")]
+        public IActionResult GetById(int id)
+        {
+
+            var result = _carImageService.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
 
         [HttpPost("add")]
         public IResult Add([FromForm] CarImage carImage,[FromForm(Name =("Image"))] IFormFile file)
