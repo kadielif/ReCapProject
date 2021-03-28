@@ -28,7 +28,7 @@ namespace Core.Aspects.Autofac.Validation
             foreach (var entity in entities)
             {
                 ValidationTool.Validate(validator, entity);
-            }
+            } 
         }
     }
   

@@ -23,7 +23,7 @@ namespace Core.Aspects.Autofac.Caching
         protected override void OnSuccess(IInvocation invocation)
         {
             _cacheManager.RemoveByPattern(_pattern);
-        }
+        } 
 
     }
 }

@@ -23,6 +23,7 @@ namespace Core.Aspects.Autofac.Transaction
                     transactionScope.Dispose();
                     throw;
                 }
+
             }
         }
     }

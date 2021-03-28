@@ -18,7 +18,6 @@ namespace Core.CrossCuttingConcerns.Microsoft
         {
             _memoryCache = ServiceTool.ServiceProvider.GetService<IMemoryCache>();
         }
-
         public void Add(string key, object value, int duration)
         {
             _memoryCache.Set(key, value, TimeSpan.FromMinutes(duration));
