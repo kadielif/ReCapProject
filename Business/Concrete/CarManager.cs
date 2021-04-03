@@ -50,6 +50,12 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarDeleted);
         }
+
+        public IDataResult<List<CarDetailDto>> GetByFilter(int brandId,int colorId)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetByFilter(brandId,colorId));
+        }
+
         [PerformanceAspect(5)]
         public IDataResult<Car> GetById(int id)
         {
